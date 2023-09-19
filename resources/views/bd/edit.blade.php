@@ -4,7 +4,6 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
 @stop
 
 @section('content')
@@ -15,6 +14,7 @@
         <div class="container">
             <div class="row">
             <div class="col-6">
+
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">InclinacionPolitica</label>
                     <input id="inclinacionPolitica" name="inclinacionPolitica" type="text" class="form-control" tabindex="1" value="{{$actorexterno->inclinacionPolitica}}">
@@ -39,7 +39,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Actor</label>
                     <select  id="id_actor" name="id_actor" class="form-select" aria-label="Default select example" tabindex="1" value="{{$actorexterno->id_actor}}">
-                        <option  value="{{$actorexterno->id_actor}}">{{$actorexterno->actores->nombre}}</option>
+                        <option  value="{{$actorexterno->id_actor}}">{{$actorexterno->id_actor}}</option>
                         @foreach($actors as $actor)
                         <option  value="{{$actor->id}}">{{$actor->nombre}}</option>
                         @endforeach
@@ -49,7 +49,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Organizacion</label>
                     <select  id="id_organizacion" name="id_organizacion" class="form-select" aria-label="Default select example" tabindex="1" value="{{$actorexterno->id_organizacion}}">
-                        <option  value="{{$actorexterno->id_organizacion}}">{{$actorexterno->organizacions->nombre}}</option>
+                        <option  value="{{$actorexterno->id_organizacion}}">{{$actorexterno->id_organizacion}}</option>
                         @foreach($organizacions as $organizacion)
                         <option  value="{{$organizacion->id}}">{{$organizacion->nombre}}</option>
                         @endforeach
@@ -59,7 +59,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Cargo Externo</label>
                     <select  id="id_cargoexterno" name="id_cargoexterno" class="form-select" aria-label="Default select example" tabindex="1" value="{{$actorexterno->id_cargoexterno}}">
-                        <option  value="{{$actorexterno->id_cargoexterno}}">{{$actorexterno->cargoexternos->nombre}}</option>
+                        <option  value="{{$actorexterno->id_cargoexterno}}">{{$actorexterno->id_cargoexterno}}</option>
                         @foreach($cargoexternos as $cargoexterno)
                         <option  value="{{$cargoexterno->id}}">{{$cargoexterno->nombre}}</option>
                         @endforeach

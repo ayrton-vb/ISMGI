@@ -22,16 +22,32 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/bds', function () {
+        return view('bd.index');
+    })->name('bds');
 });
 
 
 // CRUD TABLAS
 
 Route::resource('cargoexternos','App\Http\Controllers\CargoexternoController');
+
 Route::resource('organizacions','App\Http\Controllers\OrganizacionController');
 Route::resource('actors','App\Http\Controllers\ActorController');
 Route::resource('actorexternos','App\Http\Controllers\ActorexternoController');
 
+Route::resource('bds','App\Http\Controllers\BdController');
+
+Route::get('/bds/{id}/actorByOrganizacion','App\Http\Controllers\BdController@actorByOrganizacion');
+
+Route::get('/pdf/{id}/pdfActoresbyOrganizacion','App\Http\Controllers\PDFController@PDF');
+Route::get('/pdf/{id}/pdfActoresbyOrganizacionReconocimiento','App\Http\Controllers\PDFController@PDF2');
+
+Route::get('/organizacions/{id}/miembros','App\Http\Controllers\OrganizacionController@miembros');
+Route::get('/createorganizacions/{id}/miembros','App\Http\Controllers\OrganizacionController@createmiembros');
+Route::post('/saveorganizacions/{id}/miembros','App\Http\Controllers\OrganizacionController@savemiembros');
+Route::get('/editorganizacions/{id}/miembros','App\Http\Controllers\OrganizacionController@editmiembros');
+Route::put('/storeorganizacions/{id}/{id2}/miembros','App\Http\Controllers\OrganizacionController@storemiembros');
+Route::delete('/deleteorganizacions/{id}/{id2}/miembros','App\Http\Controllers\OrganizacionController@deletemiembros');
+
+Route::get('/dependientesorganizacions/{id}/miembros','App\Http\Controllers\BdController@orgdependiente');

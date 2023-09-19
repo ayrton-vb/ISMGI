@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Actor;
+use App\Models\Actorexterno;
 use Illuminate\Http\Request;
+use Nette\Utils\Strings;
 
 class ActorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function byPalabra($palabra){
+        $tramites = Actor::where('nombre','LIKE',"%$palabra%")->get();
+        $actorexterno = Actorexterno::all();
+
+        return   [$tramites, $actorexterno];
+    }
+
+
     public function index()
     {
         $actors = Actor::all();
@@ -33,6 +43,7 @@ class ActorController extends Controller
         $actor->nombre = $request->get('nombre');
         $actor->celular = $request->get('celular');
         $actor->carnet = $request->get('carnet');
+        $actor->sexo = $request->get('sexo');
         $actor->save();
         return redirect('/actors');
     }
@@ -63,6 +74,7 @@ class ActorController extends Controller
         $actor->nombre = $request->get('nombre');
         $actor->celular = $request->get('celular');
         $actor->carnet = $request->get('carnet');
+        $actor->sexo = $request->get('sexo');
         $actor->save();
         return redirect('/actors');
     }

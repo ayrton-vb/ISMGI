@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Actorexterno extends Model
 {
     use HasFactory;
-
     public function actores(){
         return $this->belongsTo(Actor::class,'id_actor');
     }

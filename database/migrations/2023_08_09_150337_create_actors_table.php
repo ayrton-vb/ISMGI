@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('celular');
             $table->string('carnet');
+            $table->string('sexo');
             $table->timestamps();
         });
     }

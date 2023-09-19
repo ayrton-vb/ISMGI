@@ -4,7 +4,6 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
 @stop
 
 @section('content')
@@ -19,44 +18,23 @@
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">InclinacionPolitica</label>
-                    <select  id="inclinacionPolitica" name="inclinacionPolitica" class="form-select" aria-label="Default select example" tabindex="1">
-                        <option  value="">-Selecciona-</option>
-                        <option  value="roja">Roja</option>
-                        <option  value="azul">Azul</option>
-                        <option  value="ninguna">Ninguna</option>
-                    </select>
-
+                    <input id="inclinacionPolitica" name="inclinacionPolitica" type="text" class="form-control" tabindex="1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Relacion</label>
-                    <select  id="relacion" name="relacion" class="form-select" aria-label="Default select example" tabindex="1">
-                        <option  value="">-Selecciona-</option>
-                        <option  value="buena">Buena</option>
-                        <option  value="mala">Mala</option>
-                        <option  value="neutral">Neutral</option>
-                    </select>
+                    <input id="relacion" name="relacion" type="text" class="form-control" tabindex="1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Aliado Estrategico</label>
                     <input id="aliadoEstategico" name="aliadoEstategico" type="text" class="form-control" tabindex="1">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">influencia</label>          
-                    <select  id="influencia" name="influencia" class="form-select" aria-label="Default select example" tabindex="1">
-                        <option  value="">-Selecciona-</option>
-                        <option  value="alta">Alta</option>
-                        <option  value="media">Media</option>
-                        <option  value="baja">Baja</option>
-                    </select>
+                    <label for="exampleInputEmail1" class="form-label">influencia</label>
+                    <input id="influencia" name="influencia" type="text" class="form-control" tabindex="1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Capacidad de Movilizacion</label>
-                    <select  id="capMovilizacion" name="capMovilizacion" class="form-select" aria-label="Default select example" tabindex="1">
-                        <option  value="">-Selecciona-</option>
-                        <option  value="alta">Alta</option>
-                        <option  value="media">Media</option>
-                        <option  value="baja">Baja</option>
-                    </select>
+                    <input id="capMovilizacion" name="capMovilizacion" type="text" class="form-control" tabindex="1">
                 </div>
 
                 <div class="mb-3">

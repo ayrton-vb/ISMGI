@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actor extends Model
+class Estadoactor extends Model
 {
     use HasFactory;
-    public function actorexternos(){
-        return $this->hasMany(Actorexterno::class,'id');
-    }
-
 }

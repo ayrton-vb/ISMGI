@@ -18,6 +18,7 @@
             <th>Nombre</th>
             <th>Celular</th>
             <th>Carnet</th>
+            <th>Sexo</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{$actor->nombre}}</td>
                 <td>{{$actor->celular}}</td>
                 <td>{{$actor->carnet}}</td>
+                <td>{{$actor->sexo}}</td>
                 <td>
                    <form action="{{ route ('actors.destroy',$actor->id)}}" method="POST">
                         @csrf
