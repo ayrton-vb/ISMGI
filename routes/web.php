@@ -39,6 +39,7 @@ Route::resource('actorexternos','App\Http\Controllers\ActorexternoController');
 Route::resource('bds','App\Http\Controllers\BdController');
 
 Route::get('/bds/{id}/actorByOrganizacion','App\Http\Controllers\BdController@actorByOrganizacion');
+Route::get('/bds/{id}/actorByOrganizacionFejuve','App\Http\Controllers\BdController@actorByOrganizacionFejuve');
 
 Route::get('/pdf/{id}/pdfActoresbyOrganizacion','App\Http\Controllers\PDFController@PDF');
 Route::get('/pdf/{id}/pdfActoresbyOrganizacionReconocimiento','App\Http\Controllers\PDFController@PDF2');

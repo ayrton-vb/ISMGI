@@ -19,6 +19,21 @@ class BdController extends Controller
         return view('bd.index2')->with('OrganizacionDependientes',$OrganizacionDependientes);
     }
 
+    public function actorByOrganizacionFejuve($id)
+    {
+        
+        $organizacionesDependientes = Organizacion::where('id_dependencia',$id)->get();
+
+        $actoresExterno = Actorexterno::all();
+
+        $actoresByOrganizacion = Actorexterno::where('id_organizacion',$id)->get();
+        $organizacion = Organizacion::find($id);
+
+        return view('bd.show2')->with('actoresByOrganizacion',$actoresByOrganizacion)->with('organizacion',$organizacion)
+        ->with('organizacionesDependientes',$organizacionesDependientes)->with('actoresExterno',$actoresExterno);
+        
+    }
+
     public function actorByOrganizacion($id)
     {
         $actoresByOrganizacion = Actorexterno::where('id_organizacion',$id)->get();

@@ -28,8 +28,15 @@
                 @endif
 
                 <p class="card-text m-0"><strong>Direccion: </strong>{{$organizacionsMatrize->direccion}}</p>
-                <p class="card-text m-0"><strong>Telefono:  </strong>   {{$organizacionsMatrize->telefono}}</p>
+                <p class="card-text m-0"><strong>Telefono:  </strong>{{$organizacionsMatrize->telefono}}</p>
+
+                
+                @if($organizacionsMatrize->id == 8 or $organizacionsMatrize->id == 11)
+                <a href="/bds/{{$organizacionsMatrize->id}}/actorByOrganizacionFejuve" class="btn btn-primary">Miembros Fejueve</a>
+                @else
                 <a href="/bds/{{$organizacionsMatrize->id}}/actorByOrganizacion" class="btn btn-primary">Miembros</a>
+                @endif
+
                 <a href="/dependientesorganizacions/{{$organizacionsMatrize->id}}/miembros" class="btn btn-secondary">Orgs. Dependientes</a>
                 <a href="tel:2{{$organizacionsMatrize->telefono}}" class="btn btn-danger">Llamar</a>
             </div>
