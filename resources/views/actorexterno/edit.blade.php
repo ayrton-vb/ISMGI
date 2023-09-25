@@ -37,6 +37,16 @@
                 </div>
 
                 <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Cabeza</label>
+                    <select  id="cabeza" name="cabeza" class="form-select" aria-label="Default select example" tabindex="1">
+                        <option  value="0">no</option>
+                        <option  value="1">Si</option>
+
+                    </select>
+                </div>
+                
+
+                <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Actor</label>
                     <select  id="id_actor" name="id_actor" class="form-select" aria-label="Default select example" tabindex="1" value="{{$actorexterno->id_actor}}">
                         <option  value="{{$actorexterno->id_actor}}">{{$actorexterno->actores->nombre}}</option>

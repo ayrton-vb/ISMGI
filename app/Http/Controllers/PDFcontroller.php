@@ -33,4 +33,16 @@ class PDFcontroller extends Controller
         // return view('prueba')->with('actoresByOrganizacion',$actoresByOrganizacion)->with('organizacion',$organizacion);
 
     }
+
+    public function PDF3($id){
+
+        $actoresByOrganizacion = Actorexterno::where('id_organizacion',$id)->get();
+        $organizacion = Organizacion::find($id);
+
+        $pdf = \PDF::loadView('pdf.prueba3',compact('actoresByOrganizacion','organizacion'));
+
+        return $pdf->stream('pdf.prueba.pdf');
+
+    }
+
 }

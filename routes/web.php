@@ -42,6 +42,7 @@ Route::get('/bds/{id}/actorByOrganizacion','App\Http\Controllers\BdController@ac
 Route::get('/bds/{id}/actorByOrganizacionFejuve','App\Http\Controllers\BdController@actorByOrganizacionFejuve');
 
 Route::get('/pdf/{id}/pdfActoresbyOrganizacion','App\Http\Controllers\PDFController@PDF');
+Route::get('/pdf/{id}/pdfActoresbyOrganizacionFejuve','App\Http\Controllers\PDFController@PDF3');
 Route::get('/pdf/{id}/pdfActoresbyOrganizacionReconocimiento','App\Http\Controllers\PDFController@PDF2');
 
 Route::get('/organizacions/{id}/miembros','App\Http\Controllers\OrganizacionController@miembros');

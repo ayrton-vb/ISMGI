@@ -20,6 +20,7 @@
             <th>aliadoEstategico</th>
             <th>influencia</th>
             <th>capMovilizacion</th>
+            <th>cabeza</th>
             <th>id_actor</th>
             <th>id_organizacion</th>
             <th>id_cargo</th>
@@ -35,6 +36,7 @@
                 <td>{{$actorexterno->aliadoEstategico}}</td>
                 <td>{{$actorexterno->influencia}}</td>
                 <td>{{$actorexterno->capMovilizacion}}</td>
+                <td>{{$actorexterno->cabeza}}</td>
                 <td>{{$actorexterno->actores->nombre}}</td>
                 <td>{{$actorexterno->organizacions->nombre}}</td>
                 <td>{{$actorexterno->cargoexternos->nombre}}</td>

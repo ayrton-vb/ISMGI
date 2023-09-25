@@ -41,6 +41,7 @@ class ActorexternoController extends Controller
         $actorexterno->aliadoEstategico = $request->get('aliadoEstategico');
         $actorexterno->influencia = $request->get('influencia');
         $actorexterno->capMovilizacion = $request->get('capMovilizacion');
+        $actorexterno->cabeza = $request->get('cabeza');
         $actorexterno->id_actor = $request->get('id_actor');
         $actorexterno->id_organizacion = $request->get('id_organizacion');
         $actorexterno->id_cargoexterno = $request->get('id_cargoexterno');
@@ -79,6 +80,7 @@ class ActorexternoController extends Controller
         $actorexterno->aliadoEstategico = $request->get('aliadoEstategico');
         $actorexterno->influencia = $request->get('influencia');
         $actorexterno->capMovilizacion = $request->get('capMovilizacion');
+        $actorexterno->cabeza = $request->get('cabeza');
         $actorexterno->id_actor = $request->get('id_actor');
         $actorexterno->id_organizacion = $request->get('id_organizacion');
         $actorexterno->id_cargoexterno = $request->get('id_cargoexterno');
