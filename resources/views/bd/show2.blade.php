@@ -74,8 +74,8 @@
 
 <h1 class="text-center">Lista</h1>
             
-            <table id="table" class="table table-dark table-striped mt-4">
-                <thead class="bg-primary">
+            <table id="table" class="table table-light table-striped mt-4">
+                <thead class="table-dark">
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
