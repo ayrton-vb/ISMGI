@@ -109,7 +109,9 @@ class OrganizacionController extends Controller
     {
         $organizacions = Organizacion::all();
         $tipos = Tipoorganizacion::all();
-        return view('organizacion.create')->with('tipos',$tipos)->with('organizacions',$organizacions);
+        $actores = Actor::all();
+        return view('organizacion.create')->with('tipos',$tipos)->with('organizacions',$organizacions)
+        ->with('actores',$actores);
     }
 
     /**
@@ -123,6 +125,7 @@ class OrganizacionController extends Controller
         $organizacion->fundacion = $request->get('fundacion');
         $organizacion->direccion = $request->get('direccion');
         $organizacion->telefono = $request->get('telefono');
+        $organizacion->id_cabeza = $request->get('id_cabeza');
         $organizacion->id_dependencia = $request->get('id_dependencia');
         $organizacion->id_tipoorganizacion = $request->get('id_tipoorganizacion');
         $organizacion->save();
@@ -142,11 +145,12 @@ class OrganizacionController extends Controller
      */
     public function edit(string $id)
     {
-         $tipos = Tipoorganizacion::all();
-
+        $tipos = Tipoorganizacion::all();
         $organizacions = Organizacion::all();
         $organizacion = Organizacion::find($id);
-        return view('organizacion.edit')->with('organizacion',$organizacion)->with('organizacions',$organizacions)->with('tipos',$tipos);
+        $actores = Actor::all();
+        return view('organizacion.edit')->with('organizacion',$organizacion)->with('organizacions',$organizacions)
+        ->with('tipos',$tipos)->with('actores',$actores);
     }
 
     /**
@@ -160,6 +164,7 @@ class OrganizacionController extends Controller
         $organizacion->fundacion = $request->get('fundacion');
         $organizacion->direccion = $request->get('direccion');
         $organizacion->telefono = $request->get('telefono');
+        $organizacion->id_cabeza = $request->get('id_cabeza');
         $organizacion->id_dependencia = $request->get('id_dependencia');
         $organizacion->id_tipoorganizacion = $request->get('id_tipoorganizacion');
         $organizacion->save();

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('organizacions', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('sigla');
-            $table->string('fundacion');
+            $table->string('sigla')->nullable();;
+            $table->string('fundacion')->nullable();;
             $table->string('direccion')->nullable();
             $table->string('telefono')->nullable();
             $table->foreignId('id_dependencia')->nullable()
@@ -26,7 +26,7 @@ return new class extends Migration
             ->constrained('tipoorganizacions')
             ->cascadeOnUpdate()
             ->nullOnDelete();
-            $table->timestamps();;
+            $table->timestamps();
         });
     }
 

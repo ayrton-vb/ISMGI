@@ -39,6 +39,15 @@
                         <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1">
                     </div>
                     <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Cabeza</label>
+                        <select  id="id_cabeza" name="id_cabeza" class="form-select" aria-label="Default select example" tabindex="1">
+                            <option  value="">-Seleccionar-</option>
+                            @foreach($actores as $actor)
+                            <option  value="{{$actor->id}}">{{$actor->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Dependencia</label>
                         <select  id="id_dependencia" name="id_dependencia" class="form-select" aria-label="Default select example" tabindex="1">
                             <option  value="">-Seleccionar-</option>

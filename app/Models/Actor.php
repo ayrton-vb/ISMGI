@@ -12,4 +12,8 @@ class Actor extends Model
         return $this->hasMany(Actorexterno::class,'id');
     }
 
+    public function organizaciones(){
+        return $this->hasMany(Organizacion::class,'id');
+    }
+
 }

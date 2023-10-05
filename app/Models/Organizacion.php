@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Organizacion extends Model
 {
     use HasFactory;
+
+    public function actores(){
+        return $this->belongsTo(Actor::class,'id_cabeza');
+    }
+
+
     public function actorexternos(){
         return $this->hasMany(Actorexterno::class,'id');
     }

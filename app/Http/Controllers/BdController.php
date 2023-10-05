@@ -44,10 +44,11 @@ class BdController extends Controller
 
     public function index()
     {
+        $actorExterno = Actorexterno::all();
         $organizacions = Organizacion::all();
         $organizacionsMatrizes = Organizacion::where('id_tipoorganizacion',"1")->get();
         $organizacionsIndependientes = Organizacion::where('id_tipoorganizacion',"2")->get();
-        return view('bd.index')->with('organizacions',$organizacions)->with('organizacionsMatrizes',$organizacionsMatrizes)
+        return view('bd.index')->with('actorExterno',$actorExterno)->with('organizacions',$organizacions)->with('organizacionsMatrizes',$organizacionsMatrizes)
         ->with('organizacionsIndependientes',$organizacionsIndependientes);
     }
 

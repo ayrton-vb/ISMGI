@@ -36,6 +36,28 @@
                         <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" value="{{$organizacion->telefono}}">
                     </div>
 
+                    @if($organizacion->id_cabeza == null)
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Cabeza</label>
+                        <select  id="id_cabeza" name="id_cabeza" class="form-select" aria-label="Default select example" tabindex="1">
+                            <option  value="">-Seleccionar-</option>
+                            @foreach($actores as $actor)
+                            <option  value="{{$actor->id}}">{{$actor->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @else
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Cabeza</label>
+                        <select  id="id_cabeza" name="id_cabeza" class="form-select" aria-label="Default select example" tabindex="1">
+                            <option  value="{{$organizacion->id_cabeza}}">{{$organizacion->actores->nombre}}</option>
+                            @foreach($actores as $actor)
+                            <option  value="{{$actor->id}}">{{$actor->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+
                     <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tipo de Organizacion</label>
                     <select  id="id_tipoorganizacion" name="id_tipoorganizacion" class="form-select" aria-label="Default select example" tabindex="1">

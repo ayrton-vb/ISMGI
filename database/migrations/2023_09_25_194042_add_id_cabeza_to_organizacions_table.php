@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actors', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('celular')->nullable();
-            $table->string('carnet')->nullable();
-            $table->string('sexo');
-            $table->timestamps();
+        Schema::table('organizacions', function (Blueprint $table) {
+            $table->foreignId('id_cabeza')->nullable()
+            ->constrained('actors')
+            ->cascadeOnUpdate()
+            ->nullOnDelete()->after('telefono');
+            //
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('actors');
+        Schema::table('organizacions', function (Blueprint $table) {
+            //
+        });
     }
 };

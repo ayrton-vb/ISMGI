@@ -8,35 +8,37 @@
 
 @section('content')
 
-<h1 class="text-center">Organizaciones Sociales Matrizes</h1>
-    
+<h1 class="text-center">Organizaciones Sociales Matrizes</h1> 
 <div class="container" >
   <div class="row" >
-
     @foreach($organizacionsMatrizes as $organizacionsMatrize)
     <div class="col-lg-4 col-md-4 col-sm-6" >
         <div class="card text-center" style="width: 100%;">
             <div class="card-body">
                 <h4 class="card-text m-0">{{$organizacionsMatrize->sigla}}</h4>
                 <p class="card-text m-0">{{$organizacionsMatrize->nombre}}</p>
+                @if($organizacionsMatrize->id_cabeza == null)
+                @else
+                  @foreach($actorExterno as $actorExtern)
+                    @if($organizacionsMatrize->id_cabeza == $actorExtern->id_actor)
+                    <p class="card-text m-0"><strong>Cabeza: </strong>{{$organizacionsMatrize->actores->nombre}}
+                    ({{$actorExtern->cargoexternos->nombre}})</p>
+                    @endif
+                  @endforeach
+                @endif
                 <p class="card-text m-0"><strong>Fundacion: </strong>{{$organizacionsMatrize->fundacion}}</p>
-
                 @if($organizacionsMatrize->id_dependencia == null)
                 <p class="card-text m-0"><strong>Depedencia: </strong> ninguna</p>
                 @else
                 <p class="card-text m-0"><strong>Depedencia: </strong>{{$organizacionsMatrize->organizacionDependiente->sigla}}</p>
                 @endif
-
                 <p class="card-text m-0"><strong>Direccion: </strong>{{$organizacionsMatrize->direccion}}</p>
-                <p class="card-text m-0"><strong>Telefono:  </strong>{{$organizacionsMatrize->telefono}}</p>
-
-                
+                <p class="card-text m-0"><strong>Telefono:  </strong>{{$organizacionsMatrize->telefono}}</p>  
                 @if($organizacionsMatrize->id == 8 or $organizacionsMatrize->id == 11)
                 <a href="/bds/{{$organizacionsMatrize->id}}/actorByOrganizacionFejuve" class="btn btn-primary">Miembros Fejueve</a>
                 @else
                 <a href="/bds/{{$organizacionsMatrize->id}}/actorByOrganizacion" class="btn btn-primary">Miembros</a>
                 @endif
-
                 <a href="/dependientesorganizacions/{{$organizacionsMatrize->id}}/miembros" class="btn btn-secondary">Orgs. Dependientes</a>
                 <a href="tel:2{{$organizacionsMatrize->telefono}}" class="btn btn-danger">Llamar</a>
             </div>
@@ -44,8 +46,9 @@
       </div>          
     @endforeach
   </div>
-
 </div>
+
+
 
 <h1 class="text-center">Organizaciones Sociales Independientes</h1>
     

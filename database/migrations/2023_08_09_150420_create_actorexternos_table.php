@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('inclinacionPolitica');
             $table->string('relacion');
-            $table->string('aliadoEstategico');
+            $table->string('aliadoEstategico')->nullable();
             $table->string('influencia');
             $table->string('capMovilizacion');
             $table->foreignId('id_actor')->nullable()
