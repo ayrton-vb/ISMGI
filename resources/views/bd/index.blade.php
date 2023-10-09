@@ -1,15 +1,84 @@
-
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
 
 @section('content_header')
+
 @stop
 
 @section('content')
 
-<h1 class="text-center">Organizaciones Sociales Matrizes</h1> 
-<div class="container" >
+<!-- seccion organizaciones matrizes -->
+<seccion id="osMatrizes">
+<h1 class="text-center">Organizaciones Sociales Matrizes</h1>
+  <div class="text-center">
+    <a id="botonVer" href="#ver" type="button" onclick="funcionVer()" class="btn btn-primary mb-2">Ver Tarjetas</a>
+    <a id="botonOcultar" style="display: none;" href="#ver" type="button" onclick="funcionOcultar()" class="btn btn-danger mb-2">Ocultar Tarjetas</a>
+    <a id="botonVerLista" href="#verLista" type="button" onclick="funcionVerLista()" class="btn btn-primary mb-2">Ver Lista</a>
+    <a id="botonOcultarLista" style="display: none;" href="#ver" type="button" onclick="funcionOcultarLista()" class="btn btn-danger mb-2">Ocultar Lista</a>
+    <a href="#osDependientes" type="button" class="btn btn-danger mb-2">Org. Sociales Dependientes</a>
+    <a href="#osIndependientes" type="button" class="btn btn-info mb-2">Org. Sociales Independientes</a>
+  </div>
+
+<div id="lista1" class="container">
+<h1 class="text-center">Lista</h1>
+<div class="text-center">            
+</div>      
+            <table id="table5" class="table table-light table-striped mt-4">
+                <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Sigla</th>
+                    <th>Org. Social</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Celular</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($organizacionsMatrizes as $organizacionsMatrize)
+                    <tr>
+                        <td>{{$organizacionsMatrize->id}}</td>
+                        <td>{{$organizacionsMatrize->sigla}}</td>
+                        <td>{{$organizacionsMatrize->nombre}}</td>
+
+                        @if($organizacionsMatrize->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsMatrize->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsMatrize->actores->nombre}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+
+                        @if($organizacionsMatrize->id_cabeza == null)
+                        @else
+                        @foreach($actorExterno as $actorExtern)
+                          @if($organizacionsMatrize->id_cabeza == $actorExtern->id_actor)
+                          <td>{{$actorExtern->cargoexternos->nombre}}</td>
+                          @endif
+                        @endforeach
+                        @endif
+
+                        @if($organizacionsMatrize->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsMatrize->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsMatrize->actores->celular}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+</div>
+</div>
+
+</div>
+
+
+  <div id="contenido1" class="container">
   <div class="row" >
     @foreach($organizacionsMatrizes as $organizacionsMatrize)
     <div class="col-lg-4 col-md-4 col-sm-6" >
@@ -48,10 +117,57 @@
   </div>
 </div>
 
+</seccion>
 
 
+<!-- seccion organizaciones dependientes -->
+<seccion id="osDependientes">
+<h1 class="text-center">Organizaciones Sociales Dependientes</h1>
+<div class="text-center">
+            <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
+            <a href="#osIndependientes" type="button" class="btn btn-info mb-2">Org. Sociales Independientes</a>
+</div>     
+<div class="container" >
+  <div class="row" >
+
+    @foreach($organizacionsDependientes as $organizacionsDependiente)
+    @if($organizacionsDependiente->id_dependencia != 11)
+    @if($organizacionsDependiente->id_dependencia != 8)  
+    <div class="col-lg-4 col-md-4 col-sm-6" >
+        <div class="card text-center" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-text m-0">{{$organizacionsDependiente->sigla}}</h4>
+                <p class="card-text m-0">{{$organizacionsDependiente->nombre}}</p>
+                <p class="card-text m-0"><strong>Fundacion: </strong>{{$organizacionsDependiente->fundacion}}</p>
+
+                @if($organizacionsDependiente->id_dependencia == null)
+                <p class="card-text m-0"><strong>Depedencia: </strong> ninguna</p>
+                @else
+                <p class="card-text m-0"><strong>Depedencia: </strong>{{$organizacionsDependiente->organizacionDependiente->sigla}}</p>
+                @endif
+
+                <p class="card-text m-0"><strong>Direccion: </strong>{{$organizacionsDependiente->direccion}}</p>
+                <p class="card-text m-0"><strong>Telefono:  </strong>   {{$organizacionsDependiente->telefono}}</p>
+                <a href="/bds/{{$organizacionsDependiente->id}}/actorByOrganizacion" class="btn btn-primary">Miembros</a>
+                <a href="tel:2{{$organizacionsDependiente->telefono}}" class="btn btn-danger">Llamar</a>
+            </div>
+        </div>
+      </div>
+      @endif 
+      @endif
+    @endforeach
+  </div>
+
+</div>
+</seccion>
+
+<!-- seccion organizaciones independientes -->
+<seccion id="osIndependientes">
 <h1 class="text-center">Organizaciones Sociales Independientes</h1>
-    
+<div class="text-center">
+            <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
+            <a href="#osDependientes" type="button" class="btn btn-info mb-2">Org. Sociales Dependientes</a>
+</div>  
 <div class="container" >
   <div class="row" >
 
@@ -81,75 +197,113 @@
 
 </div>
 
+</seccion>
 
-
-<h1 class="text-center">Busqueda</h1>
-    
-<div class="container" >
- 
-  <div class="row">
-              <div class="col-6">
-
-                  <div class="mb-3">
-                    <select  id="valorBusqueda" name="" class="form-select" aria-label="Default select example" tabindex="1">
-                        <option  value="0">-Selecciona-</option>
-                        <option  value="1">Nombre Actor</option>
-                        <option  value="2">Celular Actor</option>
-                        <option  value="3">Carnet Actor</option>
-                        <option  value="4">Nombre Organizacion</option>
-                    </select>
-                  </div>
-              </div>
-              <div class="col-6">
-
-              <div class="input-group mb-3">
-
-                <input onkeyup ="onBusqueda(busqueda.value);" onkeydown ="onBusqueda2(busqueda.value);" id="busqueda" type="text" class="form-control" placeholder="Palabra Clave" aria-label="Recipient's username" aria-describedby="button-addon2" >
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-
-              </div>
-  </div>  
-    
-</div>
-
-
-<section>
-
-<div id="area">
-   
-</div>
-
-
-<div id="">
-    <div class="container">
-        <div id="contenidoBusqueda" class="row">
-
-            
-        </div>
-    </div>        
-</div>
-</section>
-
+  
 @stop
 
 @section('css')
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<style>
+        #contenido1{
+          display: none;
+        }
+        #lista1{
+          display: none;
+        }
+        .image-container {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+        .zoom {
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-container:hover .zoom {
+            transform: scale(1.2);
+        }
+</style>
 @stop
 
 @section('js')
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        $('#table5').DataTable({
+             "lengthMenu":[[50,150,-1],[50,150,300,"All"]],
+            responsive: "true",
+            dom: 'Bfrtilp',
+              buttons:[
+                        {
+                          extend:    'excelHtml5',
+                          text:      '<i class="fas fa-file-excel"></i> ',
+                          titleAttr: 'Exportar a Excel',
+                          className: 'btn btn-success'
+                        },
+                        {
+                          extend:    'pdfHtml5',
+                          text:      '<i class="fas fa-file-pdf"></i> ',
+                          titleAttr: 'Exportar a PDF',
+                          className: 'btn btn-danger'
+                        },
+                        {
+                          extend:    'print',
+                          text:      '<i class="fa fa-print"></i> ',
+                          titleAttr: 'Imprimir',
+                          className: 'btn btn-info'
+                        },
+                      ]
+          });
+
+        } );
+    </script>
+    
     <script> console.log('Hi!'); </script>
     
     <script>
           window.onload = function() {
         }
+        function funcionOcultarLista(){
+          document.getElementById("lista1").style.display="none";
+          document.getElementById("botonVerLista").style.display="inline-block";
+          document.getElementById("botonOcultarLista").style.display="none";
+        }
+
+        function funcionVerLista(){
+          document.getElementById("lista1").style.display="inline-block";
+          document.getElementById("botonVerLista").style.display="none";
+          document.getElementById("botonOcultarLista").style.display="inline-block";
+        }
+        
+        function funcionOcultar(){
+          document.getElementById("contenido1").style.display="none";
+          document.getElementById("botonOcultar").style.display="none";
+          document.getElementById("botonVer").style.display="inline-block";
+        }
+        
+        function funcionVer(){
+          document.getElementById("contenido1").style.display="inline-block";
+          document.getElementById("botonOcultar").style.display="inline-block";
+          document.getElementById("botonVer").style.display="none";
+        }
 
         function onBusqueda2($value){
-
         let cupcakes = Array.prototype.slice.call(document.getElementsByClassName("cupcake"), 0);
 
         for(element of cupcakes){

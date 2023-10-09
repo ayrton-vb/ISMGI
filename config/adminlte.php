@@ -343,6 +343,13 @@ return [
             'label'       => 5,
             'label_color' => 'white',
         ],
+        [
+            'text'        => 'Busqueda',
+            'url'         => 'busqueda',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 6,
+            'label_color' => 'info',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

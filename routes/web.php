@@ -37,6 +37,7 @@ Route::resource('actors','App\Http\Controllers\ActorController');
 Route::resource('actorexternos','App\Http\Controllers\ActorexternoController');
 
 Route::resource('bds','App\Http\Controllers\BdController');
+Route::resource('busqueda','App\Http\Controllers\BusquedaController');
 
 Route::get('/bds/{id}/actorByOrganizacion','App\Http\Controllers\BdController@actorByOrganizacion');
 Route::get('/bds/{id}/actorByOrganizacionFejuve','App\Http\Controllers\BdController@actorByOrganizacionFejuve');
