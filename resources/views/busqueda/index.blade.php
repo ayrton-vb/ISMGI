@@ -102,7 +102,7 @@
           console.log(data[0]);
           console.log(data[1]);
 
-    for (var i=0; i<data.length; i++){
+    for (var i=0; i<data[0].length; i++){
         var html_select = '<h3  value="">Actores:</h3></br>';
 
         const col = document.createElement("div");
@@ -136,12 +136,9 @@
         p3.innerText = "C.I.: "+data[0][i].carnet+"";
 
         const p4 = document.createElement("p");
-        for (var j=0; j<data[1].length; j++){
-          
-          p4.classList.add("card-text", "m-0");
-          p4.innerText = "Relacion: "+data[1][j].relacion+"";
-
-        };
+        p4.classList.add("card-text", "m-0");
+        p3.innerText = "Relacion: "+data[1][i][0].relacion+"";
+                        
         const enlace = document.createElement("a");
         enlace.classList.add("btn", "btn-success");
         enlace.innerText = "WhatsApp";
@@ -150,7 +147,7 @@
         const enlace2 = document.createElement("a");
         enlace2.classList.add("btn", "btn-danger");
         enlace2.innerText = "Llamar";
-        enlace2.setAttribute("href","tel:"+data[0][i].celular+"");
+        enlace2.setAttribute("href","tel:"+data[1][i].celular+"");
  
         col.appendChild(card);
         card.appendChild(cardBody);

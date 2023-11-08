@@ -10,10 +10,13 @@
 <h1 class="text-center">{{$organizacion->nombre}}</h1>
 
         <div class="text-center">
-            <a href="/pdf/{{$organizacion->id}}/pdfActoresbyOrganizacion" type="button" class="btn btn-dark mb-2">Lista</a>
+    <!--    <a href="/pdf/{{$organizacion->id}}/pdfActoresbyOrganizacion" type="button" class="btn btn-dark mb-2">Lista</a>
             <a href="/pdf/{{$organizacion->id}}/pdfActoresbyOrganizacionReconocimiento" type="button" class="btn btn-secondary mb-2">Reconocimiento</a>
+    -->
+            <a href="#lista" type="button" class="btn btn-primary mb-2">Lista</a>
         </div>
 
+<section id="tarjetas">
 <div class="container" >
   <div class="row" >
 
@@ -56,10 +59,20 @@
 
 </div>
 </div>
+</section>
 
 
+
+<section id="lista">
 <h1 class="text-center">Lista</h1>
-    <table id="table" class="table table-light table-striped mt-4">
+<div class="text-center">
+    <!--    <a href="/pdf/{{$organizacion->id}}/pdfActoresbyOrganizacion" type="button" class="btn btn-dark mb-2">Lista</a>
+            <a href="/pdf/{{$organizacion->id}}/pdfActoresbyOrganizacionReconocimiento" type="button" class="btn btn-secondary mb-2">Reconocimiento</a>
+    -->
+    <a href="#tarjetas" type="button" class="btn btn-primary mb-2">Tarjetas</a>
+        </div>
+
+<table id="table" class="table table-light table-striped mt-4">
         <thead class="table-dark">
         <tr>
             <th>Id</th>
@@ -80,7 +93,9 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+</table>
+</section>
+
 
 
 @stop

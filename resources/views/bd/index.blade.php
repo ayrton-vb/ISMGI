@@ -124,10 +124,77 @@
 <seccion id="osDependientes">
 <h1 class="text-center">Organizaciones Sociales Dependientes</h1>
 <div class="text-center">
-            <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
-            <a href="#osIndependientes" type="button" class="btn btn-info mb-2">Org. Sociales Independientes</a>
-</div>     
-<div class="container" >
+    <a id="botonVer2" href="#ver" type="button" onclick="funcionVer2()" class="btn btn-primary mb-2">Ver Tarjetas</a>
+    <a id="botonOcultar2" style="display: none;" href="#ver" type="button" onclick="funcionOcultar2()" class="btn btn-danger mb-2">Ocultar Tarjetas</a>
+    <a id="botonVerLista2" href="#verLista" type="button" onclick="funcionVerLista2()" class="btn btn-primary mb-2">Ver Lista</a>
+    <a id="botonOcultarLista2" style="display: none;" href="#ver" type="button" onclick="funcionOcultarLista2()" class="btn btn-danger mb-2">Ocultar Lista</a>
+    <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
+    <a href="#osIndependientes" type="button" class="btn btn-info mb-2">Org. Sociales Independientes</a>    
+</div>  
+
+
+
+<div id="lista2" class="container">
+<h1 class="text-center">Lista</h1>
+<div class="text-center">            
+</div>      
+            <table id="table6" class="table table-light table-striped mt-4">
+                <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Sigla</th>
+                    <th>Org. Social</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Celular</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($organizacionsDependientes as $organizacionsDependiente)
+                @if($organizacionsDependiente->id_dependencia != 11)
+                @if($organizacionsDependiente->id_dependencia != 8)  
+                    <tr>
+                        <td>{{$organizacionsDependiente->id}}</td>
+                        <td>{{$organizacionsDependiente->sigla}}</td>
+                        <td>{{$organizacionsDependiente->nombre}}</td>
+
+                        @if($organizacionsDependiente->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsDependiente->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsDependiente->actores->nombre}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+
+                        @if($organizacionsDependiente->id_cabeza == null)
+                        @else
+                        @foreach($actorExterno as $actorExtern)
+                          @if($organizacionsDependiente->id_cabeza == $actorExtern->id_actor)
+                          <td>{{$actorExtern->cargoexternos->nombre}}</td>
+                          @endif
+                        @endforeach
+                        @endif
+
+                        @if($organizacionsDependiente->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsDependiente->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsDependiente->actores->celular}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+                    </tr>
+                    @endif 
+                  @endif
+                @endforeach
+                </tbody>
+            </table>
+</div>
+
+
+
+<div id="contenido2" class="container" >
   <div class="row" >
 
     @foreach($organizacionsDependientes as $organizacionsDependiente)
@@ -165,10 +232,70 @@
 <seccion id="osIndependientes">
 <h1 class="text-center">Organizaciones Sociales Independientes</h1>
 <div class="text-center">
-            <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
-            <a href="#osDependientes" type="button" class="btn btn-info mb-2">Org. Sociales Dependientes</a>
+    <a id="botonVer3" href="#ver" type="button" onclick="funcionVer3()" class="btn btn-primary mb-2">Ver Tarjetas</a>
+    <a id="botonOcultar3" style="display: none;" href="#ver" type="button" onclick="funcionOcultar3()" class="btn btn-danger mb-2">Ocultar Tarjetas</a>
+    <a id="botonVerLista3" href="#verLista" type="button" onclick="funcionVerLista3()" class="btn btn-primary mb-2">Ver Lista</a>
+    <a id="botonOcultarLista3" style="display: none;" href="#ver" type="button" onclick="funcionOcultarLista3()" class="btn btn-danger mb-2">Ocultar Lista</a>
+    <a href="#osMatrizes" type="button" class="btn btn-danger mb-2">Org. Sociales Matrizes</a>
+    <a href="#osDependientes" type="button" class="btn btn-info mb-2">Org. Sociales Dependientes</a>  
 </div>  
-<div class="container" >
+
+<div id="lista3" class="container">
+<h1 class="text-center">Lista</h1>
+<div class="text-center">            
+</div>      
+            <table id="table7" class="table table-light table-striped mt-4">
+                <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Sigla</th>
+                    <th>Org. Social</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Celular</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($organizacionsIndependientes as $organizacionsIndependiente)
+                    <tr>
+                        <td>{{$organizacionsIndependiente->id}}</td>
+                        <td>{{$organizacionsIndependiente->sigla}}</td>
+                        <td>{{$organizacionsIndependiente->nombre}}</td>
+
+                        @if($organizacionsIndependiente->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsIndependiente->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsIndependiente->actores->nombre}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+
+                        @if($organizacionsIndependiente->id_cabeza == null)
+                        @else
+                        @foreach($actorExterno as $actorExtern)
+                          @if($organizacionsIndependiente->id_cabeza == $actorExtern->id_actor)
+                          <td>{{$actorExtern->cargoexternos->nombre}}</td>
+                          @endif
+                        @endforeach
+                        @endif
+
+                        @if($organizacionsIndependiente->id_cabeza == null)
+                        @else
+                          @foreach($actorExterno as $actorExtern)
+                            @if($organizacionsIndependiente->id_cabeza == $actorExtern->id_actor)
+                            <td>{{$organizacionsIndependiente->actores->celular}}</td>
+                            @endif
+                          @endforeach
+                        @endif
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+</div>
+
+
+<div id="contenido3" class="container" >
   <div class="row" >
 
     @foreach($organizacionsIndependientes as $organizacionsIndependiente)
@@ -212,6 +339,18 @@
         #lista1{
           display: none;
         }
+        #contenido2{
+          display: none;
+        }
+        #lista2{
+          display: none;
+        }
+        #contenido3{
+          display: none;
+        }
+        #lista3{
+          display: none;
+        }
         .image-container {
             display: inline-block;
             overflow: hidden;
@@ -246,6 +385,69 @@
     <script>
         $(document).ready(function() {
         $('#table5').DataTable({
+             "lengthMenu":[[50,150,-1],[50,150,300,"All"]],
+            responsive: "true",
+            dom: 'Bfrtilp',
+              buttons:[
+                        {
+                          extend:    'excelHtml5',
+                          text:      '<i class="fas fa-file-excel"></i> ',
+                          titleAttr: 'Exportar a Excel',
+                          className: 'btn btn-success',
+                          messageTop: 'organizaviones'
+                        },
+                        {
+                          extend:    'pdfHtml5',
+                          text:      '<i class="fas fa-file-pdf"></i> ',
+                          titleAttr: 'Exportar a PDF',
+                          className: 'btn btn-danger'
+                        },
+                        {
+                          extend:    'print',
+                          text:      '<i class="fa fa-print"></i> ',
+                          titleAttr: 'Imprimir',
+                          className: 'btn btn-info'
+                        },
+                      ]
+          });
+
+        } );
+    </script>
+
+<script>
+        $(document).ready(function() {
+        $('#table6').DataTable({
+             "lengthMenu":[[50,150,-1],[50,150,300,"All"]],
+            responsive: "true",
+            dom: 'Bfrtilp',
+              buttons:[
+                        {
+                          extend:    'excelHtml5',
+                          text:      '<i class="fas fa-file-excel"></i> ',
+                          titleAttr: 'Exportar a Excel',
+                          className: 'btn btn-success'
+                        },
+                        {
+                          extend:    'pdfHtml5',
+                          text:      '<i class="fas fa-file-pdf"></i> ',
+                          titleAttr: 'Exportar a PDF',
+                          className: 'btn btn-danger'
+                        },
+                        {
+                          extend:    'print',
+                          text:      '<i class="fa fa-print"></i> ',
+                          titleAttr: 'Imprimir',
+                          className: 'btn btn-info'
+                        },
+                      ]
+          });
+
+        } );
+    </script>
+
+<script>
+        $(document).ready(function() {
+        $('#table7').DataTable({
              "lengthMenu":[[50,150,-1],[50,150,300,"All"]],
             responsive: "true",
             dom: 'Bfrtilp',
@@ -302,6 +504,59 @@
           document.getElementById("botonOcultar").style.display="inline-block";
           document.getElementById("botonVer").style.display="none";
         }
+
+        
+
+        function funcionOcultarLista2(){
+          document.getElementById("lista2").style.display="none";
+          document.getElementById("botonVerLista2").style.display="inline-block";
+          document.getElementById("botonOcultarLista2").style.display="none";
+        }
+
+        function funcionVerLista2(){
+          document.getElementById("lista2").style.display="inline-block";
+          document.getElementById("botonVerLista2").style.display="none";
+          document.getElementById("botonOcultarLista2").style.display="inline-block";
+        }
+        
+        function funcionOcultar2(){
+          document.getElementById("contenido2").style.display="none";
+          document.getElementById("botonOcultar2").style.display="none";
+          document.getElementById("botonVer2").style.display="inline-block";
+        }
+        
+        function funcionVer2(){
+          document.getElementById("contenido2").style.display="inline-block";
+          document.getElementById("botonOcultar2").style.display="inline-block";
+          document.getElementById("botonVer2").style.display="none";
+        }
+
+        
+
+        function funcionOcultarLista3(){
+          document.getElementById("lista3").style.display="none";
+          document.getElementById("botonVerLista3").style.display="inline-block";
+          document.getElementById("botonOcultarLista3").style.display="none";
+        }
+
+        function funcionVerLista3(){
+          document.getElementById("lista3").style.display="inline-block";
+          document.getElementById("botonVerLista3").style.display="none";
+          document.getElementById("botonOcultarLista3").style.display="inline-block";
+        }
+        
+        function funcionOcultar3(){
+          document.getElementById("contenido3").style.display="none";
+          document.getElementById("botonOcultar3").style.display="none";
+          document.getElementById("botonVer3").style.display="inline-block";
+        }
+        
+        function funcionVer3(){
+          document.getElementById("contenido3").style.display="inline-block";
+          document.getElementById("botonOcultar3").style.display="inline-block";
+          document.getElementById("botonVer3").style.display="none";
+        }
+
 
         function onBusqueda2($value){
         let cupcakes = Array.prototype.slice.call(document.getElementsByClassName("cupcake"), 0);

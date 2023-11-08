@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Actor;
 use App\Models\Actorexterno;
+use App\Models\Cargoexterno;
 use Illuminate\Http\Request;
 use Nette\Utils\Strings;
 
@@ -14,9 +15,17 @@ class ActorController extends Controller
      */
     public function byPalabra($palabra){
         $tramites = Actor::where('nombre','LIKE',"%$palabra%")->get();
-        $actorexterno = Actorexterno::all();
+        $var = array();
 
-        return   [$tramites, $actorexterno];
+        foreach ($tramites as $tramite) {
+            $actorexterno = Actorexterno::where('id_actor',$tramite->id)->get();
+            array_push($var,$actorexterno);
+        }
+        
+        $actorexterno = Actorexterno::all();
+        $cargos = Cargoexterno::all();
+
+        return   [$tramites, $var];
     }
 
 
