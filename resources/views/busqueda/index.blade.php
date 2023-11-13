@@ -101,6 +101,8 @@
       $.get('/api/tramites/'+palabra+'/palabra', function (data){
           console.log(data[0]);
           console.log(data[1]);
+          console.log(data[2]);
+          console.log(data[3]);
 
     for (var i=0; i<data[0].length; i++){
         var html_select = '<h3  value="">Actores:</h3></br>';
@@ -118,7 +120,7 @@
 
         const imgM = document.createElement("img");
         imgM.setAttribute("src", "/imagenes/persona.png");
-        imgM.setAttribute("width","40");
+        imgM.setAttribute("width","80");
 
         const imgF = document.createElement("img");
         imgF.setAttribute("src", "/imagenes/persona2.png");
@@ -127,22 +129,70 @@
         p1.classList.add("card-text", "m-0");
         p1.innerText = data[0][i].nombre;
 
+        const div = document.createElement("div");
+
+        const titulo = document.createElement("p");
+        titulo.classList.add("fw-bold");
+        titulo.classList.add("d-inline");
+        titulo.innerText = "Celular : ";
+
         const p2 = document.createElement("p");
         p2.classList.add("card-text", "m-0");
-        p2.innerText = "Celular: "+data[0][i].celular+"";
+        p2.classList.add("d-inline");
+        p2.innerText = ""+data[0][i].celular+"";
+
+        const div2 = document.createElement("div");
+
+        const titulo2 = document.createElement("p");
+        titulo2.classList.add("fw-bold");
+        titulo2.classList.add("d-inline");
+        titulo2.innerText = "C.I.: ";
 
         const p3 = document.createElement("p");
         p3.classList.add("card-text", "m-0");
-        p3.innerText = "C.I.: "+data[0][i].carnet+"";
+        p3.classList.add("d-inline");
+        p3.innerText = ""+data[0][i].carnet+"";
+
+        const div3 = document.createElement("div");
+
+        const titulo3 = document.createElement("p");
+        titulo3.classList.add("fw-bold");
+        titulo3.classList.add("d-inline");
+        titulo3.innerText = "Relacion: ";
 
         const p4 = document.createElement("p");
         p4.classList.add("card-text", "m-0");
-        p3.innerText = "Relacion: "+data[1][i][0].relacion+"";
-                        
+        p4.classList.add("d-inline");
+        p4.innerText = ""+data[1][i][0].relacion+"";
+
+        const div4 = document.createElement("div");
+
+        const titulo4 = document.createElement("p");
+        titulo4.classList.add("fw-bold");
+        titulo4.classList.add("d-inline");
+        titulo4.innerText = "Cargo: ";
+
+        const p5 = document.createElement("p");
+        p5.classList.add("d-inline");
+        p5.classList.add("card-text", "m-0");
+        p5.innerText = ""+data[2][i][0].nombre+"";
+
+        const div5 = document.createElement("div");
+
+        const titulo5 = document.createElement("p");
+        titulo5.classList.add("fw-bold");
+        titulo5.classList.add("d-inline");
+        titulo5.innerText = "Organizacion: ";
+
+        const p6 = document.createElement("p");
+        p6.classList.add("card-text", "m-0");
+        p6.classList.add("d-inline");
+        p6.innerText = ""+data[3][i][0].nombre+"";
+
         const enlace = document.createElement("a");
         enlace.classList.add("btn", "btn-success");
         enlace.innerText = "WhatsApp";
-        enlace.setAttribute("href","http://wa.me/591"+data[0][i].celular+"?text=Buenas%20Sr(a).%20"+data[0][i].nombre+"");
+        enlace.setAttribute("href","http://wa.me/591"+data[0][i].celular+"?text=Buenas%20Sr(a).%20"+data[0][i].nombre+" "+data[2][i][0].nombre+" de la "+data[3][i][0].nombre+"");
 
         const enlace2 = document.createElement("a");
         enlace2.classList.add("btn", "btn-danger");
@@ -154,9 +204,27 @@
         cardBody.appendChild(imgM);
 
         cardBody.appendChild(p1);
-        cardBody.appendChild(p2);
-        cardBody.appendChild(p3);
-        cardBody.appendChild(p4);
+
+        cardBody.appendChild(div);
+        div.appendChild(titulo);
+        div.appendChild(p2);
+
+        cardBody.appendChild(div2);
+        div2.appendChild(titulo2);
+        div2.appendChild(p3);
+        
+        cardBody.appendChild(div3);
+        div3.appendChild(titulo3);
+        div3.appendChild(p4);
+
+        cardBody.appendChild(div4);
+        div4.appendChild(titulo4);
+        div4.appendChild(p5);
+
+        cardBody.appendChild(div5);
+        div5.appendChild(titulo5);
+        div5.appendChild(p6);
+
         cardBody.appendChild(enlace);
         cardBody.appendChild(enlace2);
 

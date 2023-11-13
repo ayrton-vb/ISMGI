@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Actor;
 use App\Models\Actorexterno;
 use App\Models\Cargoexterno;
+use App\Models\Organizacion;
 use Illuminate\Http\Request;
 use Nette\Utils\Strings;
 
@@ -14,18 +15,30 @@ class ActorController extends Controller
      * Display a listing of the resource.
      */
     public function byPalabra($palabra){
-        $tramites = Actor::where('nombre','LIKE',"%$palabra%")->get();
+        $actores = Actor::where('nombre','LIKE',"%$palabra%")->get();
         $var = array();
+        $var2 = array();
+        $var3 = array();
 
-        foreach ($tramites as $tramite) {
-            $actorexterno = Actorexterno::where('id_actor',$tramite->id)->get();
-            array_push($var,$actorexterno);
+        foreach ($actores as $actor) {
+            $actorexternos = Actorexterno::where('id_actor',$actor->id)->get();
+            array_push($var,$actorexternos);
+
+        }
+
+        for($i=0;$i<count($var);$i++){
+
+            $cargos=Cargoexterno::where('id',$var[$i][0]->id_cargoexterno)->get();
+            array_push($var2,$cargos);
+        }
+
+        for($j=0;$j<count($var);$j++){
+
+            $organizacion=Organizacion::where('id',$var[$j][0]->id_organizacion)->get();
+            array_push($var3,$organizacion);
         }
         
-        $actorexterno = Actorexterno::all();
-        $cargos = Cargoexterno::all();
-
-        return   [$tramites, $var];
+        return   [$actores, $var, $var2, $var3];
     }
 
 
