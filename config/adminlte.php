@@ -399,6 +399,34 @@ return [
                
                ],
         ],
+        [
+            'text'    => 'Actas',
+            'icon'    => '	fas fa-folder-open',
+            'submenu' => [
+                [
+                    'text'        => 'Tipo Actas',
+                    'url'         => 'tipoactas',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 1,
+                    'label_color' => 'danger',
+                ],
+                [
+                    'text'        => 'Problematicas',
+                    'url'         => 'problematicas',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 2,
+                    'label_color' => 'info',
+                ],
+                [
+                    'text'        => 'Acta',
+                    'url'         => 'actas',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 3,
+                    'label_color' => 'primary',
+                ],
+               
+               ],
+        ],
        
         // ['header' => 'account_settings'],
         // [
