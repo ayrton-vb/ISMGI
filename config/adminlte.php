@@ -382,6 +382,20 @@ return [
                     'label'       => 3,
                     'label_color' => 'primary',
                 ],
+                [
+                    'text'        => 'Cargos Internos',
+                    'url'         => 'cargointernos',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 4,
+                    'label_color' => 'danger',
+                ],
+                [
+                    'text'        => 'Actor Internos',
+                    'url'         => 'actorinternos',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 5,
+                    'label_color' => 'info',
+                ],
                
                ],
         ],

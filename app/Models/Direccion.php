@@ -16,4 +16,8 @@ class Direccion extends Model
         return $this->hasMany(Organizacion::class,'id');
     }
 
+    public function actorinterno(){
+        return $this->hasMany(Actorinterno::class,'id');
+    }
+
 }

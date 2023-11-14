@@ -12,4 +12,9 @@ class Secretaria extends Model
     public function direcciones(){
         return $this->hasMany(Direccion::class,'id');
     }
+
+    public function actorinterno(){
+        return $this->hasMany(Actorinterno::class,'id');
+    }
+    
 }

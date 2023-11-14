@@ -30,6 +30,8 @@ Route::middleware([
 
 // CRUD TABLAS
 
+Route::resource('actorinternos','App\Http\Controllers\ActorinternoController');
+Route::resource('cargointernos','App\Http\Controllers\CargointernoController');
 Route::resource('unidads','App\Http\Controllers\UnidadController');
 Route::resource('direccions','App\Http\Controllers\DireccionController');
 Route::resource('secretarias','App\Http\Controllers\SecretariaController');
