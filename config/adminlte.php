@@ -424,6 +424,20 @@ return [
                     'label'       => 3,
                     'label_color' => 'primary',
                 ],
+                [
+                    'text'        => 'Registro',
+                    'url'         => 'registros',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 4,
+                    'label_color' => 'danger',
+                ],
+                [
+                    'text'        => 'Bd',
+                    'url'         => 'bd2s',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 5,
+                    'label_color' => 'info',
+                ],
                
                ],
         ],

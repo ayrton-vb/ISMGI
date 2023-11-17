@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<form action="/actas" method="POST" enctype="multipart/form-data" >
+<form action="/acta/registrosGuardar" method="POST" enctype="multipart/form-data" >
         @csrf
 
         <h1 class="text-center">Crear Acta</h1>

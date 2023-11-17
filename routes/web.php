@@ -30,6 +30,7 @@ Route::middleware([
 
 // CRUD TABLAS
 
+Route::resource('registros','App\Http\Controllers\RegistroController');
 Route::resource('actas','App\Http\Controllers\ActaController');
 Route::resource('problematicas','App\Http\Controllers\ProblematicaController');
 Route::resource('tipoactas','App\Http\Controllers\TipoactaController');
@@ -43,6 +44,7 @@ Route::resource('organizacions','App\Http\Controllers\OrganizacionController');
 Route::resource('actors','App\Http\Controllers\ActorController');
 Route::resource('actorexternos','App\Http\Controllers\ActorexternoController');
 
+Route::resource('bd2s','App\Http\Controllers\Bd2Controller');
 Route::resource('bds','App\Http\Controllers\BdController');
 Route::resource('busqueda','App\Http\Controllers\BusquedaController');
 
@@ -61,3 +63,6 @@ Route::put('/storeorganizacions/{id}/{id2}/miembros','App\Http\Controllers\Organ
 Route::delete('/deleteorganizacions/{id}/{id2}/miembros','App\Http\Controllers\OrganizacionController@deletemiembros');
 
 Route::get('/dependientesorganizacions/{id}/miembros','App\Http\Controllers\BdController@orgdependiente');
+Route::get('/acta/{id}/registros','App\Http\Controllers\Bd2Controller@registrosByActa');
+Route::get('/acta/{id}/registrosCrear','App\Http\Controllers\Bd2Controller@registrosByActaCrear');
+Route::get('/acta/registrosGuardar','App\Http\Controllers\Bd2Controller@registrosByActaGuardar');

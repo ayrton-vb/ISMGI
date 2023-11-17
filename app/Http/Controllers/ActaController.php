@@ -6,6 +6,7 @@ use App\Models\Acta;
 use App\Models\Problematica;
 use App\Models\Tipoacta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ActaController extends Controller
 {
@@ -39,8 +40,26 @@ class ActaController extends Controller
         $acta->hora = $request->get('hora');
         $acta->fecha = $request->get('fecha');
         $acta->relevancia = $request->get('relevancia');
-        $acta->scan = $request->get('scan');
-        $acta->foto = $request->get('foto');
+        $acta->scan = $request->file('scan');
+        $acta->foto = $request->file('foto');
+
+            if ($acta->scan) {
+                $archivo=$request->file('scan');
+                $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
+                $acta->scan=$archivo->getClientOriginalName();
+            }else {
+                
+            };
+            if ($acta->foto) {
+                $archivo=$request->file('foto');
+                $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
+                $acta->foto=$archivo->getClientOriginalName();
+            }else {
+                
+            };
+ 
+       
+
         $acta->id_tipoacta = $request->get('id_tipoacta');
         $acta->id_problematica = $request->get('id_problematica');
         $acta->save();
@@ -78,15 +97,24 @@ class ActaController extends Controller
         $acta->hora = $request->get('hora');
         $acta->fecha = $request->get('fecha');
         $acta->relevancia = $request->get('relevancia');
+        $acta->scan = $request->file('scan');
+        $acta->foto = $request->file('foto');
 
-        $archivo=$request->file('scan');
-        $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
-        $acta->scan=$archivo->getClientOriginalName();
+            if ($acta->scan) {
+                $archivo=$request->file('scan');
+                $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
+                $acta->scan=$archivo->getClientOriginalName();
+            }else {
+                $acta->scan = $request->get('scan2');
+            };
 
-        $archivo=$request->file('foto');
-        $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
-        $acta->foto=$archivo->getClientOriginalName();
-
+            if ($acta->foto) {
+                $archivo=$request->file('foto');
+                $archivo->move(public_path().'/Archivos/',$archivo->getClientOriginalName());
+                $acta->foto=$archivo->getClientOriginalName();
+            }else {
+                $acta->foto = $request->get('foto2');
+            };
 
         $acta->id_tipoacta = $request->get('id_tipoacta');
         $acta->id_problematica = $request->get('id_problematica');

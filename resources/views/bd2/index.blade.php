@@ -4,11 +4,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+
 @stop
 
 @section('content')
-<h1 class="text-center">Actas</h1>
+<h1 class="text-center">Base de Datos Actas</h1>
     <a href="actas/create" class="btn btn-dark mb-2">Crear</a>
 
     <table id="table" class="table table-light table-striped mt-4">
@@ -24,6 +24,7 @@
             <th>Foto</th>
             <th>Tipo Acta</th>
             <th>Problematica</th>
+            <th>Registro</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -45,6 +46,9 @@
                 @else
                 <td></td>
                 @endif
+                
+                <td><a class="btn btn-primary" href="/acta/{{$acta->id}}/registros">Registros</a></td>    
+               
                 <td>
                    <form action="{{ route ('actas.destroy',$acta->id)}}" method="POST">
                         @csrf

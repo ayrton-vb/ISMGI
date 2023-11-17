@@ -8,48 +8,42 @@
 @stop
 
 @section('content')
-<h1 class="text-center">Actas</h1>
-    <a href="actas/create" class="btn btn-dark mb-2">Crear</a>
+<h1 class="text-center">Registros</h1>
+    <a href="registros/create" class="btn btn-dark mb-2">Crear</a>
 
     <table id="table" class="table table-light table-striped mt-4">
         <thead class="bg-dark">
         <tr>
             <th>Id</th>
-            <th>Tema</th>
-            <th>Lugar</th>
-            <th>Hora</th>
-            <th>Fecha</th>
-            <th>Relevancia</th>
-            <th>Scaneado</th>
-            <th>Foto</th>
-            <th>Tipo Acta</th>
-            <th>Problematica</th>
+            <th>Acta</th>
+            <th>Actor Externo</th>
+            <th>Actor Interno</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($actas as $acta)
-            <tr>
-                <td>{{$acta->id}}</td>
-                <td>{{$acta->tema}}</td>
-                <td>{{$acta->lugar}}</td>
-                <td>{{$acta->hora}}</td>
-                <td>{{$acta->fecha}}</td>
-                <td>{{$acta->relevancia}}</td>
-                <td> <a class="btn btn-success" href="Archivos/{{$acta->scan}}" target="blank_">documeto</a></td>
-                <td><a class="btn btn-warning" href="Archivos/{{$acta->foto}}" target="blank_">foto</a></td>
-                <td>{{$acta->tipoactas->nombre}}</td>
+        @foreach($registros as $registro)
+        <tr>
+                <td>{{$registro->id}}</td>
+                <td>{{$registro->actas->tema}}</td>
 
-                @if($acta->id_problematica)
-                <td>{{$acta->problematicas->nombre}}</td>
+                @if($registro->id_actorexterno)
+                <td>{{$registro->actorexternos->actores->nombre}}</td>
                 @else
-                <td></td>
+                <td>{{$registro->id_actorexterno}}</td>
                 @endif
+
+                @if($registro->id_actorinterno)
+                <td>{{$registro->actorinternos->actors->nombre}}</td>
+                @else
+                <td>{{$registro->id_interno}}</td>
+                @endif
+
                 <td>
-                   <form action="{{ route ('actas.destroy',$acta->id)}}" method="POST">
+                   <form action="{{ route ('registros.destroy',$registro->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="/actas/{{$acta->id}}/edit" class="btn btn-info">Editar</a>
+                        <a href="/registros/{{$registro->id}}/edit" class="btn btn-info">Editar</a>
                         <button type="submit" class="btn btn-danger">Borrar</button>
                     </form>
                 </td>
