@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Actorexterno;
 use App\Models\Actorinterno;
 use App\Models\Acta;
+use App\Models\Historialactorexterno;
 use App\Models\Problematica;
 use App\Models\Registro;
 use App\Models\Tipoacta;
@@ -21,9 +22,10 @@ class Bd2Controller extends Controller
         $registros = new Registro();
         $registros->id_acta = $request->get('id_acta');
         $registros->id_actorexterno = $request->get('id_actorexterno');
+        $registros->id_historialactorexterno = $request->get('id_historialactorexterno');
         $registros->id_actorinterno = $request->get('id_actorinterno');
         $registros->save();
-        return redirect('/bd2s');
+        return redirect("/acta/$registros->id_acta/registros");
      }
 
      public function registrosByActaCrear($id)
@@ -31,8 +33,9 @@ class Bd2Controller extends Controller
         $acta = Acta::find($id);
         $actorexternos = Actorexterno::all();
         $actorinternos = Actorinterno::all();
+        $historialexternos = Historialactorexterno::all();
         return view('bd2.crearregistro')->with('acta',$acta)->with('actorexternos',$actorexternos)
-        ->with('actorinternos',$actorinternos);
+        ->with('actorinternos',$actorinternos)->with('historialexternos',$historialexternos);
      }
 
 
@@ -96,6 +99,8 @@ class Bd2Controller extends Controller
      */
     public function destroy(string $id)
     {
-      
+        $registro = Registro::find($id);
+        $registro->delete();
+        return redirect("/acta/$registro->id_acta/registros");
     }
 }

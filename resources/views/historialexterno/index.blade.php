@@ -8,49 +8,33 @@
 @stop
 
 @section('content')
-<h1 class="text-center">Registros</h1>
-    <a href="registros/create" class="btn btn-dark mb-2">Crear</a>
+<h1 class="text-center">Historial Externo</h1>
+    <a href="historialexternos/create" class="btn btn-dark mb-2">Crear</a>
 
     <table id="table" class="table table-light table-striped mt-4">
         <thead class="bg-dark">
         <tr>
             <th>Id</th>
-            <th>Acta</th>
             <th>Actor Externo</th>
-            <th>Historial Externo</th>
-            <th>Actor Interno</th>
+            <th>Cargo</th>
+            <th>Organizacion</th>
+            <th>Fecha Termino</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($registros as $registro)
+        @foreach($historialexternos as $historialexterno)
         <tr>
-                <td>{{$registro->id}}</td>
-                <td>{{$registro->actas->tema}}</td>
-
-                @if($registro->id_actorexterno)
-                <td>{{$registro->actorexternos->actores->nombre}}</td>
-                @else
-                <td>{{$registro->id_actorexterno}}</td>
-                @endif
-
-                @if($registro->id_historialactorexterno)
-                <td>{{$registro->id_historialactorexternos->nombre}}</td>
-                @else
-                <td>{{$registro->id_historialactorexterno}}</td>
-                @endif
-
-                @if($registro->id_actorinterno)
-                <td>{{$registro->actorinternos->actors->nombre}}</td>
-                @else
-                <td>{{$registro->id_interno}}</td>
-                @endif
-
+                <td>{{$historialexterno->id}}</td>
+                <td>{{$historialexterno->actors->nombre}}</td>
+                <td>{{$historialexterno->cargoexternos->nombre}}</td>
+                <td>{{$historialexterno->organizacions->nombre}}</td>
+                <td>{{$historialexterno->fechatermino}}</td>
                 <td>
-                   <form action="{{ route ('registros.destroy',$registro->id)}}" method="POST">
+                   <form action="{{ route ('historialexternos.destroy',$historialexterno->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="/registros/{{$registro->id}}/edit" class="btn btn-info">Editar</a>
+                        <a href="/historialexternos/{{$historialexterno->id}}/edit" class="btn btn-info">Editar</a>
                         <button type="submit" class="btn btn-danger">Borrar</button>
                     </form>
                 </td>

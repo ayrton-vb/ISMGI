@@ -11,28 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actas', function (Blueprint $table) {
+        Schema::create('historialactorexternos', function (Blueprint $table) {
             $table->id();
-            $table->string('tema');
-            $table->string('lugar');
-            $table->time('hora')->nullable();
-            $table->date('fecha');
-            $table->string('relevancia');
-            $table->String('scan')->nullable();
-            $table->String('foto')->nullable();
-
-            $table->foreignId('id_tipoacta')
+            $table->foreignId('id_actor')
             ->nullable()
-            ->constrained('tipoactas')
+            ->constrained('actors')
             ->cascadeOnUpdate()
             ->nullOnDelete();
-
-            $table->foreignId('id_problematica')
+            $table->foreignId('id_cargoexterno')
             ->nullable()
-            ->constrained('problematicas')
+            ->constrained('cargoexternos')
             ->cascadeOnUpdate()
             ->nullOnDelete();
-
+            $table->foreignId('id_organizacion')
+            ->nullable()
+            ->constrained('organizacions')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+            $table->date('fechatermino');
             $table->timestamps();
         });
     }
@@ -42,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actas');
+        Schema::dropIfExists('historialactorexternos');
     }
 };

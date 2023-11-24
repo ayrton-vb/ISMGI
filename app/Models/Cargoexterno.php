@@ -12,4 +12,7 @@ class Cargoexterno extends Model
     public function actorexternos(){
         return $this->hasMany(Actorexterno::class,'id');
     }
+    public function historialexternos(){
+        return $this->hasMany(Historialactorexterno::class,'id');
+    }
 }

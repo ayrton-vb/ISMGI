@@ -438,6 +438,13 @@ return [
                     'label'       => 5,
                     'label_color' => 'info',
                 ],
+                [
+                    'text'        => 'Historial Externo',
+                    'url'         => 'historialexternos',
+                    'icon'        => 'far fa-fw fa-file',
+                    'label'       => 6,
+                    'label_color' => 'primary',
+                ],
                
                ],
         ],

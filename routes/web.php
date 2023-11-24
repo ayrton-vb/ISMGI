@@ -30,6 +30,7 @@ Route::middleware([
 
 // CRUD TABLAS
 
+Route::resource('historialexternos','App\Http\Controllers\HistorialactorexternoController');
 Route::resource('registros','App\Http\Controllers\RegistroController');
 Route::resource('actas','App\Http\Controllers\ActaController');
 Route::resource('problematicas','App\Http\Controllers\ProblematicaController');
@@ -65,4 +66,4 @@ Route::delete('/deleteorganizacions/{id}/{id2}/miembros','App\Http\Controllers\O
 Route::get('/dependientesorganizacions/{id}/miembros','App\Http\Controllers\BdController@orgdependiente');
 Route::get('/acta/{id}/registros','App\Http\Controllers\Bd2Controller@registrosByActa');
 Route::get('/acta/{id}/registrosCrear','App\Http\Controllers\Bd2Controller@registrosByActaCrear');
-Route::get('/acta/registrosGuardar','App\Http\Controllers\Bd2Controller@registrosByActaGuardar');
+Route::post('/acta/registrosGuardar','App\Http\Controllers\Bd2Controller@registrosByActaGuardar');

@@ -24,4 +24,8 @@ class Organizacion extends Model
     public function tipos(){
         return $this->belongsTo(Tipoorganizacion::class,'id_tipoorganizacion');
     }
+
+    public function historialexternos(){
+        return $this->hasMany(Historialactorexterno::class,'id');
+    }
 }

@@ -23,9 +23,19 @@ return new class extends Migration
             ->constrained('actorexternos')
             ->cascadeOnUpdate()
             ->nullOnDelete();
+            $table->foreignId('id_historialactorexterno')
+            ->nullable()
+            ->constrained('historialactorexternos')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
             $table->foreignId('id_actorinterno')
             ->nullable()
             ->constrained('actorinternos')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+            $table->foreignId('id_historialactorinterno')
+            ->nullable()
+            ->constrained('historialactorinternos')
             ->cascadeOnUpdate()
             ->nullOnDelete();
             $table->timestamps();

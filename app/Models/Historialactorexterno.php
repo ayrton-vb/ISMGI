@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actorexterno extends Model
+class Historialactorexterno extends Model
 {
     use HasFactory;
-    public function actores(){
+
+    public function actors(){
         return $this->belongsTo(Actor::class,'id_actor');
     }
 
@@ -19,5 +20,4 @@ class Actorexterno extends Model
     public function organizacions(){
         return $this->belongsTo(Organizacion::class,'id_organizacion');
     }
-
 }

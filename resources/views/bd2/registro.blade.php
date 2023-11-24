@@ -17,6 +17,7 @@
         <th>Id</th>
         <th>Acta</th>
         <th>Actor Externo</th>
+        <th>Historial Externo</th>
         <th>Actor Interno</th>
         <th>Acciones</th>
     </tr>
@@ -31,6 +32,12 @@
             <td>{{$registro->actorexternos->actores->nombre}}</td>
             @else
             <td>{{$registro->id_actorexterno}}</td>
+            @endif
+
+            @if($registro->id_historialactorexterno)
+                <td>{{$registro->historialactorexternos->actors->nombre}}</td>
+                @else
+                <td>{{$registro->id_historialactorexterno}}</td>
             @endif
 
             @if($registro->id_actorinterno)
