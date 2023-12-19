@@ -24,4 +24,8 @@ class Actor extends Model
         return $this->hasMany(Historialactorexterno::class,'id');
     }
 
+    public function actorinstitucionals(){
+        return $this->hasMany(Actorinstitucional::class,'id');
+    }
+
 }

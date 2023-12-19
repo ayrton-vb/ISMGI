@@ -30,6 +30,9 @@ Route::middleware([
 
 // CRUD TABLAS
 
+Route::resource('actorinstitucionals','App\Http\Controllers\ActorinstitucionalController');
+Route::resource('cargoinstitucionals','App\Http\Controllers\CargoinstitucionalController');
+Route::resource('institucions','App\Http\Controllers\InstitucionController');
 Route::resource('historialexternos','App\Http\Controllers\HistorialactorexternoController');
 Route::resource('registros','App\Http\Controllers\RegistroController');
 Route::resource('actas','App\Http\Controllers\ActaController');
