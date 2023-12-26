@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Actorinstitucional;
 use App\Models\Actorexterno;
 use App\Models\Actorinterno;
 use App\Models\Acta;
@@ -24,6 +24,7 @@ class Bd2Controller extends Controller
         $registros->id_actorexterno = $request->get('id_actorexterno');
         $registros->id_historialactorexterno = $request->get('id_historialactorexterno');
         $registros->id_actorinterno = $request->get('id_actorinterno');
+        $registros->id_actorinstitucional = $request->get('id_actorinstitucional');
         $registros->save();
         return redirect("/acta/$registros->id_acta/registros");
      }
@@ -34,8 +35,10 @@ class Bd2Controller extends Controller
         $actorexternos = Actorexterno::all();
         $actorinternos = Actorinterno::all();
         $historialexternos = Historialactorexterno::all();
+        $actorinstitucionals = Actorinstitucional::all();
         return view('bd2.crearregistro')->with('acta',$acta)->with('actorexternos',$actorexternos)
-        ->with('actorinternos',$actorinternos)->with('historialexternos',$historialexternos);
+        ->with('actorinternos',$actorinternos)->with('historialexternos',$historialexternos)
+        ->with('actorinstitucionals',$actorinstitucionals);
      }
 
 

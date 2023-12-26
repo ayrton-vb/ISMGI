@@ -48,6 +48,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Actor Institucional</label>
+                    <select  id="id_actorinstitucional" name="id_actorinstitucional" class="form-select" aria-label="Default select example" tabindex="1">
+                        <option  value="">-Selecciona-</option>
+                        @foreach($actorinstitucionals as $actorinstitucional)
+                            <option  value="{{$actorinstitucional->id}}">{{$actorinstitucional->actors->nombre}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
             </div>       
         </div>

@@ -21,9 +21,14 @@ class Registro extends Model
         return $this->belongsTo(Actorinterno::class,'id_actorinterno');
     }
 
+    public function actorinstitucionals(){
+        return $this->belongsTo(Actorinstitucional::class,'id_actorinstitucional');
+    }
+
     public function historialactorexternos(){
         return $this->belongsTo(Historialactorexterno::class,'id_historialactorexterno');
     }
+    
 
     public function historialactorinternos(){
         return $this->belongsTo(Historialactorinterno::class,'id_historialactorinterno');
