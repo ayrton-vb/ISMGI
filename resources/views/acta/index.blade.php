@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'ACTAS')
 
 @section('content_header')
     <h1>Dashboard</h1>
@@ -23,6 +23,8 @@
             <th>Scaneado</th>
             <th>Foto</th>
             <th>Tipo Acta</th>
+            <th>Numero</th>
+            <th>Antecedente</th>
             <th>Problematica</th>
             <th>Acciones</th>
         </tr>
@@ -39,6 +41,18 @@
                 <td> <a class="btn btn-success" href="Archivos/{{$acta->scan}}" target="blank_">documeto</a></td>
                 <td><a class="btn btn-warning" href="Archivos/{{$acta->foto}}" target="blank_">foto</a></td>
                 <td>{{$acta->tipoactas->nombre}}</td>
+
+                @if($acta->tiponumero)
+                <td>{{$acta->tiponumero}}</td>
+                @else
+                <td></td>
+                @endif
+    
+                @if($acta->antecedente)
+                <td>{{$acta->antecedente}}</td>
+                @else
+                <td></td>
+                @endif
 
                 @if($acta->id_problematica)
                 <td>{{$acta->problematicas->nombre}}</td>

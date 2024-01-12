@@ -59,6 +59,14 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Numero</label>
+                    <input id="tiponumero" name="tiponumero" type="text" class="form-control" tabindex="1" value="{{$acta->tiponumero}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Antecedente</label>
+                    <input id="antecedente" name="antecedente" type="text" class="form-control" tabindex="1" value="{{$acta->antecedente}}">
+                </div>
                
                 <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Problematica</label>

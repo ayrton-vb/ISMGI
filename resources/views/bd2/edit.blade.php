@@ -59,6 +59,15 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Numero</label>
+                    <input id="tiponumero" name="tiponumero" type="text" class="form-control" tabindex="1" alue="{{$acta->tiponumero}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">HR</label>
+                    <input id="hr" name="hr" type="text" class="form-control" tabindex="1" alue="{{$acta->hr}}">
+                </div>
+
                
                 <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Problematica</label>

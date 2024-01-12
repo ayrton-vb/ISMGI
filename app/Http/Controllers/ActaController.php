@@ -61,6 +61,8 @@ class ActaController extends Controller
        
 
         $acta->id_tipoacta = $request->get('id_tipoacta');
+        $acta->tiponumero = $request->get('tiponumero');
+        $acta->antecedente = $request->get('antecedente');
         $acta->id_problematica = $request->get('id_problematica');
         $acta->save();
         return redirect('/actas');
@@ -117,6 +119,8 @@ class ActaController extends Controller
             };
 
         $acta->id_tipoacta = $request->get('id_tipoacta');
+        $acta->tiponumero = $request->get('tiponumero');
+        $acta->antecedente = $request->get('antecedente');
         $acta->id_problematica = $request->get('id_problematica');
         $acta->save();
         

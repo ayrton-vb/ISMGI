@@ -61,6 +61,14 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Numero</label>
+                    <input id="tiponumero" name="tiponumero" type="text" class="form-control" tabindex="1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Antecedente</label>
+                    <input id="antecedente" name="antecedente" type="text" class="form-control" tabindex="1">
+                </div>
+                <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Problematica</label>
                     <select  id="id_problematica" name="id_problematica" class="form-select" aria-label="Default select example" tabindex="1">
                         <option  value="">-Selecciona-</option>
